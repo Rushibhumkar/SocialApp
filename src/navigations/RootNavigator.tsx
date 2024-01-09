@@ -13,6 +13,9 @@ import UserUnFocused from 'react-native-vector-icons/AntDesign';
 import UserFocused from 'react-native-vector-icons/Entypo';
 import CartUnFocused from 'react-native-vector-icons/AntDesign';
 import CartFocused from 'react-native-vector-icons/Entypo';
+import ProductInfoScreen from '../screens/ProductInfoScreen';
+import AddAddressScreen from '../screens/AddAddressScreen';
+import AddressScreen from '../screens/AddressScreen';
 
 const RootNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -96,6 +99,21 @@ const RootNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ProductInfoScreen"
+          component={ProductInfoScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddAddressScreen"
+          component={AddAddressScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddressScreen"
+          component={AddressScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

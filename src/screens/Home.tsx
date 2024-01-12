@@ -11,7 +11,7 @@ import {
   Modal,
   StatusBar,
 } from 'react-native';
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
 import EarthIcon from 'react-native-vector-icons/AntDesign';
 import SearchIcon from 'react-native-vector-icons/AntDesign';
 import MicIcon from 'react-native-vector-icons/Feather';
@@ -27,6 +27,8 @@ import ProductItem from '../components/ProductItem';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {useSelector} from 'react-redux';
 import {sizes} from '../utils/Constants';
+import jwt_decode from 'jwt-decode';
+import {UserType} from './UserContext';
 
 const Home = ({navigation}: any) => {
   const list = [
@@ -201,9 +203,11 @@ const Home = ({navigation}: any) => {
 
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(false);
-  const [modalVisible, setModalVisible] = useState(true);
-
+  const [addresses, setAddresses] = useState([]);
   const [category, setCategory] = useState('jewelery');
+  const {userId, setUserId} = useContext(UserType);
+  const [selectedAddress, setSelectedAdress] = useState('');
+  console.log(selectedAddress);
   const [items, setItems] = useState([
     {label: "Men's clothing", value: "men's clothing"},
     {label: 'jewelery', value: 'jewelery'},
@@ -215,20 +219,47 @@ const Home = ({navigation}: any) => {
       try {
         const response = await axios.get('https://fakestoreapi.com/products');
         setProducts(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log('error message', error);
       }
     };
+
     fetchData();
   }, []);
-  // console.log(products);
   const onGenderOpen = useCallback(() => {
     setCompanyOpen(false);
   }, []);
-  const cart = useSelector(state => {
-    state.cart.cart;
-  });
-  console.log(cart);
+
+  const cart = useSelector(state => state.cart.cart);
+  const [modalVisible, setModalVisible] = useState(false);
+  useEffect(() => {
+    if (userId) {
+      fetchAddresses();
+    }
+  }, [userId, modalVisible]);
+  const fetchAddresses = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/addresses/${userId}`,
+      );
+      const {addresses} = response.data;
+
+      setAddresses(addresses);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = await AsyncStorage.getItem('authToken');
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.userId;
+      setUserId(userId);
+    };
+
+    fetchUser();
+  }, []);
+  console.log('address', addresses);
   return (
     <>
       <SafeAreaView
@@ -285,7 +316,7 @@ const Home = ({navigation}: any) => {
             }}>
             <LocationIcon name="location-outline" size={24} color="black" />
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Text style={{fontSize: 13, fontWeight: '500', color: '#000'}}>
                 Deliver to this ,Add a Address
               </Text>

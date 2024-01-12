@@ -14,34 +14,35 @@ import KeyboardIcon from 'react-native-vector-icons/MaterialIcons';
 import LocationIcon from 'react-native-vector-icons/Entypo';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import axios from 'axios';
+import {UserType} from './UserContext';
 // import { UserType } from "../UserContext";
 
 const AddAddressScreen = () => {
   const navigation = useNavigation();
   const [addresses, setAddresses] = useState([]);
-  // const { userId, setUserId } = useContext(UserType);
-  // console.log("userId", userId);
-  // useEffect(() => {
-  //   fetchAddresses();
-  // }, []);
-  // const fetchAddresses = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:8000/addresses/${userId}`
-  //     );
-  //     const { addresses } = response.data;
+  const {userId, setUserId} = useContext(UserType);
+  console.log('userId', userId);
+  useEffect(() => {
+    fetchAddresses();
+  }, []);
+  const fetchAddresses = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/addresses/${userId}`,
+      );
+      const {addresses} = response.data;
 
-  //     setAddresses(addresses);
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     fetchAddresses();
-  //   }, [])
-  // );
-  // console.log("addresses", addresses);
+      setAddresses(addresses);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+  useFocusEffect(
+    useCallback(() => {
+      fetchAddresses();
+    }, []),
+  );
+  console.log('addresses', addresses);
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}

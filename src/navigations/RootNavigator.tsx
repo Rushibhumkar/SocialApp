@@ -16,6 +16,9 @@ import CartFocused from 'react-native-vector-icons/Entypo';
 import ProductInfoScreen from '../screens/ProductInfoScreen';
 import AddAddressScreen from '../screens/AddAddressScreen';
 import AddressScreen from '../screens/AddressScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import CartScreen from '../screens/CartScreen';
+import ConfirmationScreen from '../screens/ConfirmationScreen';
 
 const RootNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -40,8 +43,8 @@ const RootNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={Home}
+          name="ProfileScreen"
+          component={ProfileScreen}
           options={{
             tabBarLabel: 'Profile',
             tabBarLabelStyle: {color: '#008E97'},
@@ -56,8 +59,8 @@ const RootNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Cart"
-          component={Home}
+          name="CartScreen"
+          component={CartScreen}
           options={{
             tabBarLabel: 'Cart',
             tabBarLabelStyle: {color: '#008E97'},
@@ -99,6 +102,11 @@ const RootNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ConfirmationScreen"
+          component={ConfirmationScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen

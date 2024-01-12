@@ -3,7 +3,7 @@ import {
   Text,
   View,
   ScrollView,
-  Pressable,
+  TouchableOpacity,
   TextInput,
   Image,
   Platform,
@@ -24,6 +24,7 @@ import {
 const CartScreen = ({navigation}: any) => {
   const cart = useSelector((state: any) => state.cart.cart);
   console.log(cart);
+
   const total = cart
     ?.map((item: any) => item.price * item.quantity)
     .reduce(({curr, prev}: any) => curr + prev, 0);
@@ -51,7 +52,7 @@ const CartScreen = ({navigation}: any) => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <Pressable
+        <TouchableOpacity
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -73,7 +74,7 @@ const CartScreen = ({navigation}: any) => {
             placeholderTextColor={'grey'}
             style={{color: '#000'}}
           />
-        </Pressable>
+        </TouchableOpacity>
 
         <MicIcon name="mic" size={24} color="black" />
       </View>
@@ -90,7 +91,7 @@ const CartScreen = ({navigation}: any) => {
         EMI details Available
       </Text>
 
-      <Pressable
+      <TouchableOpacity
         onPress={() => navigation.navigate('ConfirmationScreen')}
         style={{
           backgroundColor: '#FFC72C',
@@ -102,7 +103,7 @@ const CartScreen = ({navigation}: any) => {
           marginTop: 10,
         }}>
         <Text>Proceed to Buy ({cart.length}) items</Text>
-      </Pressable>
+      </TouchableOpacity>
 
       <Text
         style={{
@@ -126,7 +127,7 @@ const CartScreen = ({navigation}: any) => {
               borderRightWidth: 0,
             }}
             key={index}>
-            <Pressable
+            <TouchableOpacity
               style={{
                 marginVertical: 10,
                 flexDirection: 'row',
@@ -163,9 +164,9 @@ const CartScreen = ({navigation}: any) => {
                   {item?.rating?.rate} ratings
                 </Text> */}
               </View>
-            </Pressable>
+            </TouchableOpacity>
 
-            <Pressable
+            <TouchableOpacity
               style={{
                 marginTop: 15,
                 marginBottom: 10,
@@ -182,7 +183,7 @@ const CartScreen = ({navigation}: any) => {
                   borderRadius: 7,
                 }}>
                 {item?.quantity > 1 ? (
-                  <Pressable
+                  <TouchableOpacity
                     onPress={() => decreaseQuantity(item)}
                     style={{
                       backgroundColor: '#D8D8D8',
@@ -191,9 +192,9 @@ const CartScreen = ({navigation}: any) => {
                       borderBottomLeftRadius: 6,
                     }}>
                     <MinusIcon name="minus" size={24} color="black" />
-                  </Pressable>
+                  </TouchableOpacity>
                 ) : (
-                  <Pressable
+                  <TouchableOpacity
                     onPress={() => deleteItem(item)}
                     style={{
                       backgroundColor: '#D8D8D8',
@@ -202,19 +203,19 @@ const CartScreen = ({navigation}: any) => {
                       borderBottomLeftRadius: 6,
                     }}>
                     <DeleteIcon name="delete" size={24} color="black" />
-                  </Pressable>
+                  </TouchableOpacity>
                 )}
 
-                <Pressable
+                <TouchableOpacity
                   style={{
                     backgroundColor: 'white',
                     paddingHorizontal: 18,
                     paddingVertical: 6,
                   }}>
-                  <Text>{item?.quantity}</Text>
-                </Pressable>
+                  <Text style={{color: '#000'}}>{item?.quantity}</Text>
+                </TouchableOpacity>
 
-                <Pressable
+                <TouchableOpacity
                   onPress={() => increaseQuantity(item)}
                   style={{
                     backgroundColor: '#D8D8D8',
@@ -223,9 +224,9 @@ const CartScreen = ({navigation}: any) => {
                     borderBottomLeftRadius: 6,
                   }}>
                   <PlusIcon name="plus" size={24} color="black" />
-                </Pressable>
+                </TouchableOpacity>
               </View>
-              <Pressable
+              <TouchableOpacity
                 onPress={() => deleteItem(item)}
                 style={{
                   backgroundColor: 'white',
@@ -236,17 +237,17 @@ const CartScreen = ({navigation}: any) => {
                   borderWidth: 0.6,
                 }}>
                 <Text>Delete</Text>
-              </Pressable>
-            </Pressable>
+              </TouchableOpacity>
+            </TouchableOpacity>
 
-            <Pressable
+            <TouchableOpacity
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 10,
                 marginBottom: 15,
               }}>
-              <Pressable
+              <TouchableOpacity
                 style={{
                   backgroundColor: 'white',
                   paddingHorizontal: 8,
@@ -256,9 +257,9 @@ const CartScreen = ({navigation}: any) => {
                   borderWidth: 0.6,
                 }}>
                 <Text>Save For Later</Text>
-              </Pressable>
+              </TouchableOpacity>
 
-              <Pressable
+              <TouchableOpacity
                 style={{
                   backgroundColor: 'white',
                   paddingHorizontal: 8,
@@ -268,8 +269,8 @@ const CartScreen = ({navigation}: any) => {
                   borderWidth: 0.6,
                 }}>
                 <Text>See More Like this</Text>
-              </Pressable>
-            </Pressable>
+              </TouchableOpacity>
+            </TouchableOpacity>
           </View>
         ))}
       </View>

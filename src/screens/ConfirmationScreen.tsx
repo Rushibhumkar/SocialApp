@@ -3,7 +3,7 @@ import {
   Text,
   View,
   ScrollView,
-  Pressable,
+  TouchableOpacity,
   Alert,
   Platform,
 } from 'react-native';
@@ -179,9 +179,9 @@ const ConfirmationScreen = () => {
             Select Delivery Address
           </Text>
 
-          <Pressable>
+          <TouchableOpacity>
             {addresses?.map((item, index) => (
-              <Pressable
+              <TouchableOpacity
                 style={{
                   borderWidth: 1,
                   borderColor: '#D0D0D0',
@@ -192,7 +192,8 @@ const ConfirmationScreen = () => {
                   paddingBottom: 17,
                   marginVertical: 7,
                   borderRadius: 6,
-                }}>
+                }}
+                key={index}>
                 {selectedAddress && selectedAddress._id === item?._id ? (
                   <DotCircle name="dot-circle" size={20} color="#008397" />
                 ) : (
@@ -244,7 +245,7 @@ const ConfirmationScreen = () => {
                       gap: 10,
                       marginTop: 7,
                     }}>
-                    <Pressable
+                    <TouchableOpacity
                       style={{
                         backgroundColor: '#F5F5F5',
                         paddingHorizontal: 10,
@@ -254,9 +255,9 @@ const ConfirmationScreen = () => {
                         borderColor: '#D0D0D0',
                       }}>
                       <Text>Edit</Text>
-                    </Pressable>
+                    </TouchableOpacity>
 
-                    <Pressable
+                    <TouchableOpacity
                       style={{
                         backgroundColor: '#F5F5F5',
                         paddingHorizontal: 10,
@@ -266,9 +267,9 @@ const ConfirmationScreen = () => {
                         borderColor: '#D0D0D0',
                       }}>
                       <Text>Remove</Text>
-                    </Pressable>
+                    </TouchableOpacity>
 
-                    <Pressable
+                    <TouchableOpacity
                       style={{
                         backgroundColor: '#F5F5F5',
                         paddingHorizontal: 10,
@@ -278,12 +279,12 @@ const ConfirmationScreen = () => {
                         borderColor: '#D0D0D0',
                       }}>
                       <Text>Set as Default</Text>
-                    </Pressable>
+                    </TouchableOpacity>
                   </View>
 
                   <View>
                     {selectedAddress && selectedAddress._id === item?._id && (
-                      <Pressable
+                      <TouchableOpacity
                         onPress={() => setCurrentStep(1)}
                         style={{
                           backgroundColor: '#008397',
@@ -296,13 +297,13 @@ const ConfirmationScreen = () => {
                         <Text style={{textAlign: 'center', color: 'white'}}>
                           Deliver to this Address
                         </Text>
-                      </Pressable>
+                      </TouchableOpacity>
                     )}
                   </View>
                 </View>
-              </Pressable>
+              </TouchableOpacity>
             ))}
-          </Pressable>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -342,7 +343,7 @@ const ConfirmationScreen = () => {
             </Text>
           </View>
 
-          <Pressable
+          <TouchableOpacity
             onPress={() => setCurrentStep(2)}
             style={{
               backgroundColor: '#FFC72C',
@@ -353,7 +354,7 @@ const ConfirmationScreen = () => {
               marginTop: 15,
             }}>
             <Text>Continue</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -424,7 +425,7 @@ const ConfirmationScreen = () => {
 
             <Text>UPI / Credit or debit card</Text>
           </View>
-          <Pressable
+          <TouchableOpacity
             onPress={() => setCurrentStep(3)}
             style={{
               backgroundColor: '#FFC72C',
@@ -435,7 +436,7 @@ const ConfirmationScreen = () => {
               marginTop: 15,
             }}>
             <Text>Continue</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -546,7 +547,7 @@ const ConfirmationScreen = () => {
             </Text>
           </View>
 
-          <Pressable
+          <TouchableOpacity
             onPress={handlePlaceOrder}
             style={{
               backgroundColor: '#FFC72C',
@@ -557,7 +558,7 @@ const ConfirmationScreen = () => {
               marginTop: 20,
             }}>
             <Text>Place your order</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       )}
     </ScrollView>

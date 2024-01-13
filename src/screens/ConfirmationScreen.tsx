@@ -15,7 +15,7 @@ import RightArrow from 'react-native-vector-icons/MaterialIcons';
 import DotCircle from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import {cleanCart} from '../redux/CartReducer';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {UserType} from './UserContext';
 // import RazorpayCheckout from "react-native-razorpay";
 
@@ -132,7 +132,9 @@ const ConfirmationScreen = () => {
             justifyContent: 'space-between',
           }}>
           {steps?.map((step, index) => (
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <View
+              style={{justifyContent: 'center', alignItems: 'center'}}
+              key={index}>
               {index > 0 && (
                 <View
                   style={[

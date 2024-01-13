@@ -2,7 +2,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
+  TouchableOpacity,
   Image,
   TouchableOpacity,
 } from 'react-native';

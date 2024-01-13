@@ -3,7 +3,7 @@ import {
   Text,
   View,
   ScrollView,
-  Pressable,
+  TouchableOpacity,
   TextInput,
   Platform,
 } from 'react-native';
@@ -54,7 +54,7 @@ const AddAddressScreen = () => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <Pressable
+        <TouchableOpacity
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -72,7 +72,7 @@ const AddAddressScreen = () => {
             color="black"
           />
           <TextInput placeholder="Search Amazon.in" />
-        </Pressable>
+        </TouchableOpacity>
 
         <MicIcon name="mic" size={24} color="black" />
       </View>
@@ -82,7 +82,7 @@ const AddAddressScreen = () => {
           Your Addresses
         </Text>
 
-        <Pressable
+        <TouchableOpacity
           onPress={() => navigation.navigate('AddressScreen')}
           style={{
             flexDirection: 'row',
@@ -98,11 +98,11 @@ const AddAddressScreen = () => {
           }}>
           <Text style={{color: '#000'}}>Add a new Address</Text>
           <KeyboardIcon name="keyboard-arrow-right" size={24} color="black" />
-        </Pressable>
+        </TouchableOpacity>
 
-        {/* <Pressable>
+        {/* <TouchableOpacity>
           {addresses?.map((item, index) => (
-            <Pressable
+            <TouchableOpacity
               style={{
                 borderWidth: 1,
                 borderColor: "#D0D0D0",
@@ -148,7 +148,7 @@ const AddAddressScreen = () => {
                   marginTop: 7,
                 }}
               >
-                <Pressable
+                <TouchableOpacity
                   style={{
                     backgroundColor: "#F5F5F5",
                     paddingHorizontal: 10,
@@ -159,9 +159,9 @@ const AddAddressScreen = () => {
                   }}
                 >
                   <Text>Edit</Text>
-                </Pressable>
+                </TouchableOpacity>
 
-                <Pressable
+                <TouchableOpacity
                   style={{
                     backgroundColor: "#F5F5F5",
                     paddingHorizontal: 10,
@@ -172,9 +172,9 @@ const AddAddressScreen = () => {
                   }}
                 >
                   <Text>Remove</Text>
-                </Pressable>
+                </TouchableOpacity>
 
-                <Pressable
+                <TouchableOpacity
                   style={{
                     backgroundColor: "#F5F5F5",
                     paddingHorizontal: 10,
@@ -185,11 +185,11 @@ const AddAddressScreen = () => {
                   }}
                 >
                   <Text>Set as Default</Text>
-                </Pressable>
+                </TouchableOpacity>
               </View>
-            </Pressable>
+            </TouchableOpacity>
           ))}
-        </Pressable> */}
+        </TouchableOpacity> */}
       </View>
     </ScrollView>
   );

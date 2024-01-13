@@ -650,7 +650,7 @@ const styles = StyleSheet.create({});
         marginTop: 10,
         backgroundColor:
           selectedAddress === item ? '#FBCEB1' : 'white',
-      }}>
+      }} key={index}>
       <View
         style={{flexDirection: 'row', alignItems: 'center', gap: 3}}>
         <Text style={{fontSize: 13, fontWeight: 'bold'}}>

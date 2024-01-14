@@ -5,20 +5,19 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import React, {useLayoutEffect, useEffect, useContext, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
 import Notification from 'react-native-vector-icons/Ionicons';
 import SearchIcon from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
 // import { UserType } from "../UserContext";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}: any) => {
   // const { userId, setUserId } = useContext(UserType);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: '',
@@ -41,13 +40,22 @@ const ProfileScreen = () => {
             gap: 6,
             marginRight: 12,
           }}>
-          <Notification name="notifications-outline" size={24} color="black" />
-
-          <SearchIcon name="search1" size={24} color="black" />
+          <Notification
+            name="notifications-outline"
+            size={24}
+            color="black"
+            style={{padding: 4}}
+          />
+          <SearchIcon
+            name="search1"
+            size={24}
+            color="black"
+            style={{padding: 4}}
+          />
         </View>
       ),
     });
-  }, []);
+  }, [navigation]);
   const [user, setUser] = useState();
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -92,6 +100,7 @@ const ProfileScreen = () => {
   console.log('orders', orders);
   return (
     <ScrollView style={{padding: 10, flex: 1, backgroundColor: 'white'}}>
+      <StatusBar backgroundColor={'#00CED1'} barStyle={'light-content'} />
       <Text style={{fontSize: 16, fontWeight: 'bold', color: '#000'}}>
         Welcome Rushikesh
       </Text>

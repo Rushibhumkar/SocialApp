@@ -4,7 +4,6 @@ import {
   View,
   ScrollView,
   TextInput,
-  TouchableOpacity,
   Alert,
   Platform,
   TouchableOpacity,

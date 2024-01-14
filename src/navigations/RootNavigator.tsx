@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -19,6 +19,8 @@ import AddressScreen from '../screens/AddressScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import CartScreen from '../screens/CartScreen';
 import ConfirmationScreen from '../screens/ConfirmationScreen';
+import Notification from 'react-native-vector-icons/Ionicons';
+import SearchIcon from 'react-native-vector-icons/AntDesign';
 
 const RootNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -48,7 +50,7 @@ const RootNavigator = () => {
           options={{
             tabBarLabel: 'Profile',
             tabBarLabelStyle: {color: '#008E97'},
-            headerShown: false,
+            headerShown: true,
             tabBarIcon: ({focused}) => {
               return focused ? (
                 <UserFocused name="user" size={24} color={'#008E97'} />

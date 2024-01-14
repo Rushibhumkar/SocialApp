@@ -84,7 +84,7 @@ const CartScreen = ({navigation}: any) => {
           Subtotal :{' '}
         </Text>
         <Text style={{color: '#000', fontSize: 20, fontWeight: 'bold'}}>
-          {total}
+          336
         </Text>
       </View>
       <Text style={{color: '#000', marginHorizontal: 10}}>

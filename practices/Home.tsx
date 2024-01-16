@@ -1,47 +1,48 @@
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  StatusBar,
-} from 'react-native';
-import React from 'react';
-import {sizes} from '../src/utils/Constants';
+import React, {useState} from 'react';
+import {View, SafeAreaView} from 'react-native';
+import CommonFile from './CommonFile';
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const handleItemSelect = (selected, title) => {
+    console.log(`${title} selected: ${selected}`);
+  };
+  console.log(navigation);
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar
-        translucent={true}
-        barStyle={'default'}
-        backgroundColor={'transparent'}
-      />
-      <ImageBackground
-        source={{
-          uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA-SL7cGq6x0gXuc8KFur_h_Tc_uBaZqmm4w&usqp=CAU',
-        }}
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <View
         style={{
-          height: sizes.height + 40,
-          width: sizes.width,
-          //   opacity: 0.2,
+          flex: 1,
+          backgroundColor: '#00000010',
+          marginTop: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          gap: 15,
+          flexWrap: 'wrap',
+          padding: 12,
         }}>
-        <View style={{flex: 1, marginTop: 30}}>
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 16,
-              fontWeight: 'bold',
-              margin: 12,
-            }}>
-            Hi this is Rushikesh Bhumkar
-          </Text>
-        </View>
-      </ImageBackground>
+        <CommonFile
+          title={'Drinks'}
+          imageUrl={'https://cdn-icons-png.flaticon.com/128/13479/13479367.png'}
+          onSelect={selected => handleItemSelect(selected, 'Drinks')}
+        />
+        <CommonFile
+          title={'Sides'}
+          imageUrl={'https://cdn-icons-png.flaticon.com/128/3121/3121773.png'}
+          onSelect={selected => handleItemSelect(selected, 'Sides')}
+        />
+        <CommonFile
+          title={'Main dishes'}
+          imageUrl={'https://cdn-icons-png.flaticon.com/128/1634/1634155.png'}
+          onSelect={selected => handleItemSelect(selected, 'Main dishes')}
+        />
+        <CommonFile
+          title={'Desserts'}
+          imageUrl={'https://cdn-icons-png.flaticon.com/128/1148/1148842.png'}
+          onSelect={selected => handleItemSelect(selected, 'Desserts')}
+        />
+      </View>
     </SafeAreaView>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({});

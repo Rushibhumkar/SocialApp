@@ -5,6 +5,7 @@ import RootNavigator from './src/navigations/RootNavigator';
 import store from './store';
 import {UserContext} from './src/screens/UserContext';
 import Home from './practices/Home';
+import MainNavigator from './practices/MainNavigator';
 const App = () => {
   return (
     // <Provider store={store}>
@@ -12,7 +13,8 @@ const App = () => {
     //     <RootNavigator />
     //   </UserContext>
     // </Provider>
-    <Home />
+    // <Home />
+    <MainNavigator />
   );
 };
 

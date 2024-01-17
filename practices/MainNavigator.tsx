@@ -1,12 +1,9 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer, useIsFocused} from '@react-navigation/native';
-import FirstScreen from './FirstScreen';
-import SecondScreen from './SecondScreen';
-import ThirdScreen from './ThirdScreen';
-import CommonFile from './CommonFile';
+import {NavigationContainer} from '@react-navigation/native';
+import Address from './Address';
+import Home from './Home';
 
 const MainNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -17,25 +14,15 @@ const MainNavigator = () => {
         screenOptions={{
           animation: 'slide_from_right',
         }}
-        initialRouteName="FirstScreen">
+        initialRouteName="Home">
         <Stack.Screen
-          name="FirstScreen"
-          component={FirstScreen}
+          name="Address"
+          component={Address}
           options={{headerShown: true}}
         />
         <Stack.Screen
-          name="SecondScreen"
-          component={SecondScreen}
-          options={{headerShown: true}}
-        />
-        <Stack.Screen
-          name="ThirdScreen"
-          component={ThirdScreen}
-          options={{headerShown: true}}
-        />
-        <Stack.Screen
-          name="CommonFile"
-          component={CommonFile}
+          name="Home"
+          component={Home}
           options={{headerShown: true}}
         />
       </Stack.Navigator>

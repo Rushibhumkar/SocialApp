@@ -1,47 +1,74 @@
-import React, {useState} from 'react';
-import {View, SafeAreaView} from 'react-native';
-import CommonFile from './CommonFile';
+import React from 'react';
+import {View, Text, Button, TouchableOpacity} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  createAddress,
+  deleteAddress,
+  updateAddress,
+  selectAddresses,
+} from '../practices/src/store/addressSlice';
 
 const Home = ({navigation}) => {
-  const handleItemSelect = (selected, title) => {
-    console.log(`${title} selected: ${selected}`);
+  const dispatch = useDispatch();
+  const addresses = useSelector(selectAddresses);
+
+  const handleCreateAddress = () => {
+    const newAddress = {id: Date.now(), text: 'New Address'};
+    dispatch(createAddress(newAddress));
   };
-  console.log(navigation);
+
+  const handleDeleteAddress = id => {
+    dispatch(deleteAddress(id));
+  };
+
+  const handleUpdateAddress = (id, updatedData) => {
+    dispatch(updateAddress({id, updatedData}));
+  };
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <View
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <Text style={{color: '#000', fontSize: 22}}>Addresses:</Text>
+      {addresses.map(address => (
+        <View key={address.id}>
+          <Text style={{color: 'red'}}>{address.text}</Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'green',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 8,
+            }}
+            onPress={() => handleDeleteAddress(address.id)}>
+            <Text style={{color: '#fff'}}>Delete</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'green',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 8,
+            }}
+            onPress={() =>
+              handleUpdateAddress(address.id, {text: 'Updated Address'})
+            }>
+            <Text style={{color: '#fff'}}>UpdateAddress</Text>
+          </TouchableOpacity>
+        </View>
+      ))}
+      <TouchableOpacity
         style={{
-          flex: 1,
-          backgroundColor: '#00000010',
-          marginTop: 10,
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          gap: 15,
-          flexWrap: 'wrap',
-          padding: 12,
-        }}>
-        <CommonFile
-          title={'Drinks'}
-          imageUrl={'https://cdn-icons-png.flaticon.com/128/13479/13479367.png'}
-          onSelect={selected => handleItemSelect(selected, 'Drinks')}
-        />
-        <CommonFile
-          title={'Sides'}
-          imageUrl={'https://cdn-icons-png.flaticon.com/128/3121/3121773.png'}
-          onSelect={selected => handleItemSelect(selected, 'Sides')}
-        />
-        <CommonFile
-          title={'Main dishes'}
-          imageUrl={'https://cdn-icons-png.flaticon.com/128/1634/1634155.png'}
-          onSelect={selected => handleItemSelect(selected, 'Main dishes')}
-        />
-        <CommonFile
-          title={'Desserts'}
-          imageUrl={'https://cdn-icons-png.flaticon.com/128/1148/1148842.png'}
-          onSelect={selected => handleItemSelect(selected, 'Desserts')}
-        />
-      </View>
-    </SafeAreaView>
+          backgroundColor: 'green',
+          alignSelf: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 8,
+        }}
+        onPress={() => navigation.navigate('Address')}>
+        <Text style={{color: '#fff'}}>Add Address</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

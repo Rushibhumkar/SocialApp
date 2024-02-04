@@ -1,8 +1,7 @@
-// Import necessary functions from redux toolkit
+// store.js
 import {configureStore} from '@reduxjs/toolkit';
 import addressReducer from './addressSlice';
 
-// Create and export the store
 const store = configureStore({
   reducer: {
     address: addressReducer,

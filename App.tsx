@@ -1,36 +1,31 @@
-// import {StyleSheet, Text, View} from 'react-native';
-// import React from 'react';
-// import {Provider} from 'react-redux';
-// import RootNavigator from './src/navigations/RootNavigator';
-// import store from './store';
-// import {UserContext} from './src/screens/UserContext';
-// import Home from './practices/Home';
-// import MainNavigator from './practices/MainNavigator';
-// const App = () => {
-//   return (
-//     // <Provider store={store}>
-//     //   <UserContext>
-//     //     <RootNavigator />
-//     //   </UserContext>
-//     // </Provider>
-//     // <Home />
-//     <MainNavigator />
-//   );
-// };
-
-// export default App;
-
-// const styles = StyleSheet.create({});
-// Import necessary components and functions
 import React from 'react';
-import {Provider} from 'react-redux';
-import store from './practices/src/store/store';
-import Home from './practices/Home';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Otp from './practices/otpVerification/screens/Otp';
+import Gated from './practices/otpVerification/screens/Gated';
+import PhoneNumber from './practices/otpVerification/screens/PhoneNumber';
+
 const App = () => {
+  type StackParamList = {
+    PhoneNumber: undefined;
+    Otp: {phoneNumber: string};
+    Gated: undefined;
+  };
+
+  const Stack = createNativeStackNavigator<StackParamList>();
+
   return (
-    <Provider store={store}>
-      <Home />
-    </Provider>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="PhoneNumber"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="PhoneNumber" component={PhoneNumber} />
+        <Stack.Screen name="Otp" component={Otp} />
+        <Stack.Screen name="Gated" component={Gated} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

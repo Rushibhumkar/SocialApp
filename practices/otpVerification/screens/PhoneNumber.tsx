@@ -10,7 +10,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import PhoneInput from 'react-native-phone-number-input';
 import {sendSmsVerification} from '../api/verify';
 
-const PhoneNumber = ({navigation}: any) => {
+const PhoneNumber = ({navigation}) => {
   const [value, setValue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
   const phoneInput = useRef<PhoneInput>(null);

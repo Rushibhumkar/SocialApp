@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Button, View, Text} from 'react-native';
 
-const Gated = ({navigation}: any) => {
+const Gated = ({navigation}) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View>

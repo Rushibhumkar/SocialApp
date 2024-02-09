@@ -4,7 +4,7 @@ import {SafeAreaView, StyleSheet, Button, Text} from 'react-native';
 import {checkVerification} from '../api/verify';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 
-const Otp = ({route, navigation}: any) => {
+const Otp = ({route, navigation}) => {
   const {phoneNumber} = route.params;
   const [invalidCode, setInvalidCode] = useState(false);
   return (

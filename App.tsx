@@ -1,32 +1,138 @@
-import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {Provider} from 'react-redux';
-import RootNavigator from './src/navigations/RootNavigator';
 import store from './store';
 import {UserContext} from './src/screens/UserContext';
-import Home from './employeeManagement/src/screens/Home';
 import MainNavigator from './employeeManagement/src/stacks/MainNavigator';
+import RootNavigator from './src/navigations/RootNavigator';
+// import FoodAppRootNavigator from './foodAppApi/FoodAppRootNavigator';
+import PracticeMainNavigator from './PracticeProjects/src/navigation/PracticeMainNavigator';
+import Layout from './AriBnbClone/app/tabs/Layout';
+import AppNavigator from './PollApp/src/navigation/AppNavigator';
 const App = () => {
+  const [displayProject, setDisplayProject] = useState('');
   return (
-    // <Provider store={store}>
-    //   <UserContext>
-    //     <RootNavigator />
-    //   </UserContext>
-    // </Provider>
-    // <Home />
-    <MainNavigator />
-    // <View
-    //   style={{
-    //     flex: 1,
-    //     backgroundColor: '#fff',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //   }}>
-    //   <Text style={{color: '#000'}}>
-    //     Open up App.js to start working on your app!
-    //   </Text>
-    //   <StatusBar backgroundColor={'green'} barStyle={'light-content'} />
-    // </View>
+    <>
+      {displayProject === '' && (
+        <View>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'lightgreen',
+              paddingHorizontal: 16,
+              paddingVertical: 4,
+              borderRadius: 12,
+              marginTop: 12,
+              alignSelf: 'center',
+            }}
+            onPress={() => setDisplayProject('AmazonClone')}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 22,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Amazon Clone
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'lightgreen',
+              paddingHorizontal: 16,
+              paddingVertical: 4,
+              borderRadius: 12,
+              marginTop: 12,
+              alignSelf: 'center',
+            }}
+            onPress={() => setDisplayProject('EmployeeManagement')}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 22,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Employee Management
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'lightgreen',
+              paddingHorizontal: 16,
+              paddingVertical: 4,
+              borderRadius: 12,
+              marginTop: 12,
+              alignSelf: 'center',
+            }}
+            onPress={() => setDisplayProject('AirBnbClone')}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 22,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              AirBnbClone
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'lightgreen',
+              paddingHorizontal: 16,
+              paddingVertical: 4,
+              borderRadius: 12,
+              marginTop: 12,
+              alignSelf: 'center',
+            }}
+            onPress={() => setDisplayProject('AppNavigator')}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 22,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Poll App
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'lightgreen',
+              paddingHorizontal: 16,
+              paddingVertical: 4,
+              borderRadius: 12,
+              marginTop: 12,
+              alignSelf: 'center',
+            }}
+            onPress={() => setDisplayProject('PracticeProjects')}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 22,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Practice Projects
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Render components based on the selected project */}
+      {displayProject === 'AmazonClone' && (
+        <Provider store={store}>
+          <UserContext>
+            <RootNavigator />
+          </UserContext>
+        </Provider>
+      )}
+
+      {displayProject === 'EmployeeManagement' && <MainNavigator />}
+      {displayProject === 'PracticeProjects' && <PracticeMainNavigator />}
+      {displayProject === 'AirBnbClone' && <Layout />}
+      {displayProject === 'AppNavigator' && <AppNavigator />}
+    </>
   );
 };
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "332192621382",
+    "project_id": "pollapp-2720c",
+    "storage_bucket": "pollapp-2720c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332192621382:android:80fe455230ee5a21d4bb47",
+        "android_client_info": {
+          "package_name": "com.socialapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1pZNzngzmA_bfGXHwGwaE37hz52aArxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

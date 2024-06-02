@@ -1,6 +1,5 @@
 import {Text, View, ScrollView, Pressable, StatusBar} from 'react-native';
 import React from 'react';
-import {LinearGradient} from 'react-native-linear-gradient';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -12,9 +11,7 @@ const Home = ({navigation}: any) => {
   return (
     <ScrollView style={{flex: 1, minHeight: sizes.height}}>
       <StatusBar backgroundColor={'#7F7FD5'} barStyle={'light-content'} />
-      <LinearGradient
-        colors={['#7F7FD5', '#E9E4F0']}
-        style={{flex: 1, minHeight: sizes.height}}>
+      <View style={{flex: 1}}>
         <View style={{padding: 12}}>
           <View
             style={{
@@ -144,7 +141,7 @@ const Home = ({navigation}: any) => {
               </View>
             </Pressable>
             <Pressable
-              onPress={() => navigation.push('Summmary')}
+              onPress={() => navigation.navigate('Summary')}
               style={{
                 backgroundColor: '#BE93C5',
                 borderRadius: 6,
@@ -395,7 +392,7 @@ const Home = ({navigation}: any) => {
             </View>
           </View>
         </View>
-      </LinearGradient>
+      </View>
     </ScrollView>
   );
 };

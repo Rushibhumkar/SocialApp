@@ -213,7 +213,7 @@ const AddDetails = () => {
         />
 
         <Pressable onPress={handleRegister} style={styles.button}>
-          <Text style={{color: '#fff', fontWeight: 'bold'}}>Add Employee</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}>Add Employee</Text>
         </Pressable>
       </View>
     </ScrollView>
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button: {
-    backgroundColor: '7F7FD5',
+    backgroundColor: '#7F7FD5',
     padding: 10,
     marginTop: 20,
     justifyContent: 'center',

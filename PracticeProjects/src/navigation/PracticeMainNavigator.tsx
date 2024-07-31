@@ -12,12 +12,7 @@ const PracticeMainNavigator = () => {
         screenOptions={{
           animation: 'slide_from_right',
         }}
-        initialRouteName="ApiRequests">
-        <Stack.Screen
-          name="ApiRequests"
-          component={ApiRequests}
-          options={{headerShown: false}}
-        />
+        initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}

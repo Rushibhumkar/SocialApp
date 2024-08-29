@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "332192621382",
-    "project_id": "pollapp-2720c",
-    "storage_bucket": "pollapp-2720c.appspot.com"
+    "project_number": "394182273468",
+    "project_id": "otpverification-af10b",
+    "storage_bucket": "otpverification-af10b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:332192621382:android:80fe455230ee5a21d4bb47",
+        "mobilesdk_app_id": "1:394182273468:android:08cfc7089e59b614f963b9",
         "android_client_info": {
           "package_name": "com.socialapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB1pZNzngzmA_bfGXHwGwaE37hz52aArxI"
+          "current_key": "AIzaSyB80NoeneBtyIKftLQU4WCjDertxOCSszg"
         }
       ],
       "services": {
